@@ -14,8 +14,8 @@ public class TimeServerDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        // connect to sqlite database
-        options.UseSqlite(Configuration.GetConnectionString("TimeServerDatabase"));
+        string connString = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory) + Configuration.GetConnectionString("TimeServerDatabase");
+        options.UseSqlite("Data Source=" + connString);
     }
 
     public DbSet<LogRequestCurrentTime> LogRequestCurrentTimes { get; set; }

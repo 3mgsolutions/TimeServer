@@ -1,4 +1,5 @@
 using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using TimeServer.Service;
 
 namespace TimeServer.Service.Services
@@ -15,18 +16,12 @@ namespace TimeServer.Service.Services
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
-            try
-            {
                 _dbContext.LogRequestCurrentTimes.Add(new Repository.Entities.LogRequestCurrentTime() { RequestTimeStampUtc = DateTime.UtcNow });
                 _dbContext.SaveChanges();
 
                 var allRequest = _dbContext.LogRequestCurrentTimes.ToList();
                 int count = allRequest.Count;
-            }
-            catch (Exception ex)
-            {
-
-            }
+           
             return Task.FromResult(new HelloReply
             {
                 Message = "Hello " + request.Name

@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Grpc.Net.Client;
 using Microsoft.Extensions.Logging;
+using System.Security.Cryptography.X509Certificates;
 using TimeServer.Service;
 
 Console.WriteLine("Press any key to send a request");
@@ -14,7 +15,22 @@ try
         logging.SetMinimumLevel(LogLevel.Debug);
     });
 
-    using var channel = GrpcChannel.ForAddress("https://localhost:7235", new GrpcChannelOptions { LoggerFactory = loggerFactory });
+    var certificateFilePath = @"C:\\DEV\\_Education\\TimeServer\\TimeServer.Service\\bin\\Debug\\net6.0";
+    var certificate = new X509Certificate2(certificateFilePath += "\\Certificate\\cert.pfx", "password123");
+    var handler = new HttpClientHandler();
+    handler.ClientCertificates.Add(certificate);
+
+    handler.ClientCertificateOptions = ClientCertificateOption.Manual;
+    handler.ServerCertificateCustomValidationCallback =
+        (httpRequestMessage, cert, cetChain, policyErrors) =>
+        {
+            return true;
+        };
+
+    var httpClient = new HttpClient(handler);
+
+    using var channel = GrpcChannel.ForAddress("https://localhost:7001", new GrpcChannelOptions { HttpClient = httpClient, LoggerFactory = loggerFactory,
+    });
 
     var client = new Greeter.GreeterClient(channel);
 
