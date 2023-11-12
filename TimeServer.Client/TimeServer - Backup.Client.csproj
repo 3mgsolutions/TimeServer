@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Certificate\cert.pfx" />
+    <None Remove="Cerificate\cert.pfx" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Certificate\cert.pfx">
+    <Content Include="Cerificate\cert.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

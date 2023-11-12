@@ -9,6 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeServer.Client", "TimeSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeServer.Repository", "TimeServer.Repository\TimeServer.Repository.csproj", "{77F087CD-15F4-486B-BAD5-C25E0AA59ED9}"
 EndProject
+Project("{B7DD6F7E-DEF8-4E67-B5B7-07EF123DB6F0}") = "TimeServer.Installer", "TimeServer.Installer\TimeServer.Installer.wixproj", "{BA31CD31-09CF-432E-9418-60C72C015976}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{973E6FD0-D1B8-46BA-A9E7-65FFBF983F92}"
+	ProjectSection(SolutionItems) = preProject
+		TimeServer.Installer\bin\x64\Release\TimeServer.Installer.msi = TimeServer.Installer\bin\x64\Release\TimeServer.Installer.msi
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +76,22 @@ Global
 		{77F087CD-15F4-486B-BAD5-C25E0AA59ED9}.Release|x64.Build.0 = Release|Any CPU
 		{77F087CD-15F4-486B-BAD5-C25E0AA59ED9}.Release|x86.ActiveCfg = Release|Any CPU
 		{77F087CD-15F4-486B-BAD5-C25E0AA59ED9}.Release|x86.Build.0 = Release|Any CPU
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Debug|Any CPU.Build.0 = Debug|x64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Debug|ARM64.Build.0 = Debug|ARM64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Debug|x64.ActiveCfg = Debug|x64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Debug|x64.Build.0 = Debug|x64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Debug|x86.ActiveCfg = Debug|x86
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Debug|x86.Build.0 = Debug|x86
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Release|Any CPU.ActiveCfg = Release|x64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Release|Any CPU.Build.0 = Release|x64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Release|ARM64.ActiveCfg = Release|ARM64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Release|ARM64.Build.0 = Release|ARM64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Release|x64.ActiveCfg = Release|x64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Release|x64.Build.0 = Release|x64
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Release|x86.ActiveCfg = Release|x86
+		{BA31CD31-09CF-432E-9418-60C72C015976}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

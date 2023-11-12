@@ -3,6 +3,7 @@ using Grpc.Net.Client;
 using Microsoft.Extensions.Logging;
 using System.Security.Cryptography.X509Certificates;
 using TimeServer.Service;
+using static System.Net.WebRequestMethods;
 
 Console.WriteLine("Press any key to send a request");
 Console.ReadKey();
@@ -15,7 +16,7 @@ try
         logging.SetMinimumLevel(LogLevel.Debug);
     });
 
-    var certificateFilePath = @"C:\\DEV\\_Education\\TimeServer\\TimeServer.Service\\bin\\Debug\\net6.0";
+    string certificateFilePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
     var certificate = new X509Certificate2(certificateFilePath += "\\Certificate\\cert.pfx", "password123");
     var handler = new HttpClientHandler();
     handler.ClientCertificates.Add(certificate);
