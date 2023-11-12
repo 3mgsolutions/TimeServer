@@ -3,22 +3,27 @@ using Grpc.Net.Client;
 using Microsoft.Extensions.Logging;
 using TimeServer.Service;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Press any key to send a request");
+Console.ReadKey();
 
-// Using Microsoft's Grpc.Net
-var loggerFactory = LoggerFactory.Create(logging =>
+try
 {
-    logging.AddConsole();
-    logging.SetMinimumLevel(LogLevel.Debug);
-});
-using var channel = GrpcChannel.ForAddress("https://localhost:5001",
-    new GrpcChannelOptions { LoggerFactory = loggerFactory });
+    var loggerFactory = LoggerFactory.Create(logging =>
+    {
+        logging.AddConsole();
+        logging.SetMinimumLevel(LogLevel.Debug);
+    });
 
-var client = new Greeter.GreeterClient(channel);
+    using var channel = GrpcChannel.ForAddress("https://localhost:7235", new GrpcChannelOptions { LoggerFactory = loggerFactory });
 
-// Service call
-var helloResponse = client.SayHello(new HelloRequest { Name = "" });
-Console.WriteLine($"Response from GreeterService: {helloResponse.Message}");
+    var client = new Greeter.GreeterClient(channel);
 
+    // Service call
+    var helloResponse = client.SayHello(new HelloRequest { Name = "" });
+    Console.WriteLine($"Response from GreeterService: {helloResponse.Message}");
+}
+catch (Exception ex)
+{
+}
 Console.WriteLine("Press any key ...");
 Console.ReadKey();

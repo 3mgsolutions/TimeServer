@@ -1,10 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Certificate\cert.pfx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Certificate\cert.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <Protobuf Include="Protos\Greeter.proto" GrpcServices="Server" />
@@ -14,6 +24,11 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
 	<PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.40.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TimeServer.Repository\TimeServer.Repository.csproj" />
   </ItemGroup>
 
 </Project>
